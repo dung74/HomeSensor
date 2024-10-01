@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!-- <link href="{%static 'app/css/web.css' %}" rel="stylesheet" type="text/css" /> -->
+	
+	<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+	<!-- <link href="{%static 'app/css/style.css' %}" rel="stylesheet" />
+    <link href="{%static 'app/css/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{%static 'app/css/all.min.css' %}" rel="stylesheet" />
+    <link href="{%static 'app/css/main.css' %}" rel="stylesheet" type="text/css" /> -->
+	<link href="{%static 'app/css/styleBox.css' %}" rel="stylesheet" type="text/css" />
+	<!-- <link href="../css/web.css" rel="stylesheet" type="text/css" /> -->
+	<!-- <link href="{%static 'app/css/test.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{%static 'app/css/checkbox.css' %}" rel="stylesheet" type="text/css" /> -->
+	<link href="{%static 'app/css/congtac.css' %}" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+	integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+  	></script>
+
+	  <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+	<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+	<script src="{%static 'app/js/all.min.js' %}"></script>
+    <script src="{%static 'app/js/myscript.js' %}"></script>
+    <script src="{%static 'app/js/owl.carousel.min.js' %}"></script>
+	<script src="{%static 'app/js/web.js' %}"></script>
+
+	<script>
+		$(document).ready(function() {
+    $('.switch-toggle input[type="checkbox"]').change(function() {
+        let deviceName = $(this).data('device-name');  
+        let state = $(this).is(':checked');
+        console.log(`Device: ${deviceName}, State: ${state}`);
+        
+        // Cập nhật hình ảnh dựa trên trạng thái của công tắc
+        if (deviceName === "Bóng Đèn") {
+            let imgSrc = state ? "{% static 'images/denbat.png' %}" : "{% static 'images/dentat.png' %}";
+            $(`#device-img-${deviceName}`).attr('src', imgSrc);
+        }
+
+        $.ajax({
+            url: "{% url 'toggle_device' %}",
+            type: "POST",
+            data: {
+                'device_name': deviceName,
+                'state': state,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                console.log('Cập nhật thành công');
+            },
+            error: function(response) {
+                console.log('Cập nhật thất bại');
+            }
+        });
+    });
+});
+
+
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+    const switches = document.querySelectorAll('.device-switch');
+
+    switches.forEach(function(switchElem) {
+        switchElem.addEventListener('change', function() {
+            const deviceName = this.dataset.deviceName;
+            const isChecked = this.checked;
+            const imgElem = document.getElementById(`device-img-${deviceName}`);
+
+            if (deviceName === "Bóng Đèn") {
+                if (isChecked) {
+                    imgElem.src = "{% static 'images/denbat.png' %}";
+                } else {
+                    imgElem.src = "{% static 'images/dentat.png' %}";
+                }
+            }
+			if (deviceName === "Quạt") {
+                if (isChecked) {
+                    imgElem.src = "{% static 'images/quatbat.png' %}";
+                } else {
+                    imgElem.src = "{% static 'images/quattat.png' %}";
+                }
+            }	
+			if (deviceName === "Điều Hòa") {
+                if (isChecked) {
+                    imgElem.src = "{% static 'images/dieuhoabat.png' %}";
+                } else {
+                    imgElem.src = "{% static 'images/dieuhoatat.png' %}";
+                }
+            }
+            // Bạn có thể thêm các điều kiện tương tự cho các thiết bị khác ở đây nếu cần
+        });
+    });
+});
+	</script>
+	 <script>
+        function startChart() {
+            sessionStorage.setItem('isChartRunning', true);
+            window.location.href = 'chart.html'; // Chuyển sang trang biểu đồ
+        }
+    </script>
+</head>
+<body>
+	<title>HOME IoT </title>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<img src = "{% static 'images/logo.png' %}" width="90px">
+		  <!-- <a class="navbar-brand" href="#">Dungx</a> -->
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+			  <a class="nav-link active" aria-current="page" href="#" style="background-color: rgb(85, 215, 215);">Trang chủ</a>
+			  <a class="nav-link" href="{% url 'history' %}">Thiết bị</a>
+			  <a class="nav-link" href="{% url 'monitor' %}">Chỉ số</a>
+			  <a class="nav-link" href="{% url 'profile' %}">Cá nhân</a>
+			</div>
+		  </div>
+		</div>
+	  </nav>
+	  
+	<!-- <a  class="btn btn-success" href="{% url 'history' %}">History</a>
+	<a  class="btn btn-success" href="{% url 'monitor' %}">Monitor</a>
+	<a  class="btn btn-success" href="{% url 'profile' %}">profile</a> -->
+<div class ="container">
+	<div style="height: 18% ;width: 100%; padding: 20px; border: 2px solid #000; background-color: #f0f0f0; text-align: center">
+		<div class = "box">
+			<img src="{% static 'images/nhietdo.png' %}" width="50px" >
+			<strong>Nhiệt độ:</strong> <span id="value1">100</span> <strong>°C</strong>
+		</div>
+		<div class = "box" >
+			<img src="{% static 'images/doam.png' %}" width="50px" >
+			<strong>Độ ẩm:</strong> <span id="value2">150</span> <strong>%</strong>
+		</div>
+		<div class = "box" >
+			<img src="{% static 'images/dosang.jpg' %}" width="50px" >
+			<strong>Độ sáng:</strong> <span id="value3">200</span> <strong>lux</strong>
+		</div>
+	</div>
+	<div style="height:70%; display: flex; justify-content: space-between;">
+
+		<!-- <div style="height:600px; width: 70%;border: 2px solid #000">
+			{{ graph_html|safe }}
+		</div> -->
+		<div id="chartContainer" style="height:600px; width: 70%;border: 2px solid #000"></div>   
+		<div style="width: 30%;height:600px; padding: 20px; border: 2px solid #000; background-color: #f9f9f9; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+			
+			{% for device_state in device_states %}
+			<div class="switch-holder">
+				<div class="switch-label">
+				{% if device_state.device_name == "Bóng Đèn" %}
+						{% if device_state.state %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/denbat.png' %}" style="width: 40px; vertical-align: middle; margin-right: 10px;">
+						{% else %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/dentat.png' %}" style="width: 40px; vertical-align: middle; margin-right: 10px;">
+						{% endif %}
+                {% elif device_state.device_name == "Quạt" %}
+						{% if device_state.state %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/quatbat.png' %}" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+						{% else %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/quattat.png' %}" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+						{% endif %}
+                {% elif device_state.device_name == "Điều Hòa" %}
+						{% if device_state.state %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/dieuhoabat.png' %}" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+						{% else %}
+						<img id="device-img-{{ device_state.device_name }}" src="{% static 'images/dieuhoatat.png' %}" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+						{% endif %}
+                {% else %}
+                    <img src="{% static 'images/default.png' %}" style="width: 60px; vertical-align: middle; margin-right: 10px;">
+                {% endif %}
+					<span>{{ device_state.device_name }}</span>
+				</div>
+				<div class="switch-toggle">
+					<input type="checkbox" id="{{ device_state.device_name }}"  class="device-switch" data-device-name="{{ device_state.device_name }}" {% if device_state.state %}checked{% endif %}>
+					<label for="{{ device_state.device_name }}"></label>
+				</div>
+			</div>
+			{% endfor %}
+		
+		
+					<!-- <div class="switch-holder">
+						<div class="switch-label">
+							<img src="images/den.jpeg" style="width: 60px; vertical-align: middle; margin-right: 10px;">
+							<span>  Bóng đèn</span>
+						</div>
+						<div class="switch-toggle">
+							<input type="checkbox" id="bluetooth" data-device-name="Bóng Đèn" {% if device_state.state %}checked{% endif %}>
+							<label for="bluetooth"></label>
+						</div>
+					</div>
+				
+					<div class="switch-holder">
+						<div class="switch-label">
+							<img src="images/quat.webp" style="width: 60px; vertical-align: middle; margin-right: 10px;">
+							<span>  Quạt</span>
+						</div>
+						<div class="switch-toggle">
+							<input type="checkbox" id="wifi" data-device-name="Quạt">
+							<label for="wifi"></label>
+						</div>
+					</div>
+				
+					<div class="switch-holder">
+						<div class="switch-label">
+							<img src="images/dieuhoa.png" style="width: 60px; vertical-align: middle; margin-right: 10px;">
+						</i><span>  Điều hòa</span>
+						</div>
+						<div class="switch-toggle">
+							<input type="checkbox" id="location" data-device-name="Điều Hòa">
+							<label for="location"></label>
+						</div>
+					</div>
+				
+				</div> -->
+
+
+		
+	</div>
+</div>
+<div id="chartContainer" style="height: 300px; width: 50%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+</body>
+</html>

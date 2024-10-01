@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử bật/tắt thiết bị</title>
+
+    
+	<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+    <link href="{%static 'app/css/styleBox.css' %}" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<img src = "{% static 'images/logo.png' %}" width="90px">
+		  <!-- <a class="navbar-brand" href="#">Dungx</a> -->
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+              <a class="nav-link" href="{% url 'home' %}">Trang chủ</a>
+			  <a class="nav-link active" aria-current="page" href="#" style="background-color: rgb(85, 215, 215);">Thiết bị</a>
+			  
+			  <a class="nav-link" href="{% url 'monitor' %}">Chỉ số</a>
+			  <a class="nav-link" href="{% url 'profile' %}">Cá nhân</a>
+			</div>
+		  </div>
+		</div>
+	  </nav>
+      <h2>Lịch sử bật/tắt thiết bị</h2>
+    <form method="get" action = "">
+        <div class = "filter">
+            <!-- <label for = "id_filter">ID:</label>
+            <input type = "text" name = "id_filter"  id = "id_filter" value = "{{request.GET.id_filter}}"> -->
+
+            
+
+            <!-- <label for = "thiet_bi_filter">Thiết bị:</label>
+            <select name="thiet_bi_filter" id="thiet_bi_filter">
+                <option value="">Tất cả</option>
+                <option value="Đèn" {% if request.GET.thiet_bi_filter == "Đèn" %}selected{% endif %}>Đèn</option>
+                <option value="Điều Hòa" {% if request.GET.thiet_bi_filter == "Điều Hòa" %}selected{% endif %}>Điều Hòa</option>
+                <option value="Quạt" {% if request.GET.thiet_bi_filter == "Quạt" %}selected{% endif %}>Quạt</option>
+                
+            </select>
+
+            <label for = "trang_thai_filter">Trạng thái:</label>
+            <select name="trang_thai_filter" id="trang_thai_filter">
+                <option value="">Tất cả</option>
+                <option value="Bật" {% if request.GET.trang_thai_filter == "Bật" %}selected{% endif %}>Bật</option>
+                <option value="Tắt" {% if request.GET.trang_thai_filter == "Tắt" %}selected{% endif %}>Tắt</option>
+            </select> -->
+            <label for="timestamp_filter">Thời Gian:</label>
+            <input type="date" name="timestamp_filter" id="timestamp_filter" value="{{ request.GET.timestamp_filter }}">  
+            <button type="submit"   class="submit-button" >Tìm Kiếm</button>
+        </div>
+        <label for = "page_size">Page size:</label>
+        <input type="number" name="page_size" id="page_size" value="{{ request.session.page_size|default_if_none:10 }}" min="1">
+
+        <input type="hidden" name="page" value="{{ page_obj.number }}"/>
+        <button type = submit  class="submit-button" >Lưu thay đổi </button>
+    </form>
+
+
+
+    <!-- <div class="back-home">
+        <a href="{% url 'home' %}">Trở về </a>
+    </div> -->
+   
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            
+            <th>Thiết bị</th>
+            <th>Trạng thái</th>
+            <th>Thời gian</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in page_obj %}
+        <tr>
+            <td>{{item.id}}</td>
+           
+            <td>{{ item.device }}</td>
+            <td>{{ item.state }}</td>
+             <td>{{ item.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page=1&page_size={{ page_size }}">&laquo; Đầu</a>
+        <a href="?page={{ page_obj.previous_page_number }}&page_size={{ page_size }}">Trước</a>
+    {% else %}
+        <span class="disabled">&laquo; Đầu</span>
+        <span class="disabled">Trước</span>
+    {% endif %}
+
+    <span class="current">
+        Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&page_size={{ page_size }}">Tiếp</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&page_size={{ page_size }}">Cuối &raquo;</a>
+    {% else %}
+        <span class="disabled">Tiếp</span>
+        <span class="disabled">Cuối &raquo;</span>
+    {% endif %}
+</div>
+
+</body>
+</html>

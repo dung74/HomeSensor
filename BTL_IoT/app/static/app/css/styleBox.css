@@ -1,0 +1,510 @@
+.container {
+
+  position: fixed; 
+  width: 100%; 
+  height: 100% ;
+  border: 2px ;
+  left: 0 ;
+  right: 0;
+    /* position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 90%;
+    height: 80%;
+    border: 2px solid #000;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box; */
+}
+
+.header {
+    height: 15%;
+    width: 100%;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* .box {
+
+
+  height:  100px;
+  width: 200px;
+  display: inline-block; 
+  padding: 40px;  
+  border: 2px solid #000; 
+  background-color: #f0f0f0; 
+  margin: 20px 40px 20px 40px;
+  
+  border-radius: 10px;
+  font-size: 1.5em; 
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+} */
+
+
+.box {
+  display: inline-block; /* Hoặc block nếu bạn muốn mỗi box chiếm một dòng riêng */
+  padding: 10px;
+  border: 2px solid #000;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 2.0em;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  background-color: #d4d4d4;
+}
+
+.box strong {
+  color: #333;
+  font-weight: bold;
+}
+
+#value1, #value2, #value3 {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    background-color: #d4d4d4;
+}
+
+.box strong {
+    color: #333;
+    font-weight: bold;
+}
+
+#value1, #value2, #value3 {
+    color: #007bff;
+    font-weight: bold;
+}
+/* Đặt màu nền cho thanh điều hướng */
+.navbar {
+    background-color: rgb(169, 246, 246); /* Màu nền của thanh điều hướng */
+  }
+  
+  /* Tăng kích thước của các liên kết */
+  .navbar-nav .nav-link {
+    font-size: 18px; /* Kích thước chữ */
+    padding: 15px 20px; /* Khoảng cách bên trong các liên kết */
+    border-radius: 5px; /* Bo tròn các góc của liên kết */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền khi di chuột qua */
+  }
+  
+  /* Thay đổi màu nền của liên kết khi di chuột qua */
+  .navbar-nav .nav-link:hover {
+    background-color: rgb(85, 215, 215); /* Màu nền khi di chuột qua */
+    color: white; /* Màu chữ khi di chuột qua */
+  }
+  
+  /* Đặt kiểu chữ cho thương hiệu */
+  .navbar-brand {
+    font-size: 24px; /* Kích thước chữ của thương hiệu */
+    font-weight: bold; /* Độ đậm của chữ thương hiệu */
+  }
+  
+  /* Kích thước của nút điều hướng trên di động */
+  .navbar-toggler {
+    border: none; /* Xóa viền của nút */
+  }
+  
+  /* Đổi màu của biểu tượng nút điều hướng */
+  .navbar-toggler-icon {
+    background-color: #333; /* Màu nền của biểu tượng */
+  }
+  
+  /* Căn giữa nội dung của thanh điều hướng */
+  .navbar-collapse {
+    justify-content: center; /* Căn giữa các liên kết */
+  }
+  
+
+ /* CSS cho nút */
+  /* .toggle-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+
+  /* CSS khi nút được chọn */
+  /* .active {
+    background-color: #eb720f; 
+    color: #fff ;
+  }  */
+  html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #ADD8E6;
+      font-family: Arial, sans-serif;
+    }
+
+  /* trang history, monitor */
+
+  h2 {
+    font-family: 'Roboto', sans-serif; /* Thay đổi font chữ */
+    font-size: 24px; /* Kích thước chữ */
+    color: #333; /* Màu chữ */
+    text-align: center; /* Canh giữa */
+    padding: 10px; /* Khoảng cách bên trong */
+    margin: 20px auto; /* Khoảng cách bên ngoài */
+    background-color: #f4f4f9; /* Màu nền */
+    border-bottom: 3px solid #3498db; /* Đường kẻ dưới */
+    border-radius: 5px; /* Bo góc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    letter-spacing: 1px; /* Khoảng cách giữa các ký tự */
+    width: 50%;
+    
+}
+  /* button{
+    width: 300px;
+  } */
+  table {
+      width: 80%;
+      margin: 60px auto;
+      border-collapse: collapse;
+      font-size: 1.1em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+  }
+
+  th {
+      background-color: #6c7ae0;
+      color: #ffffff;
+      font-weight: bold;
+  }
+
+  tr {
+      background-color: #f8f8f8;
+      transition: background-color 0.2s ease;
+  }
+  /*home*/
+  .back-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+  }
+  .back-home a {
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .back-home a:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+  }
+
+  .back-home a:active {
+      background-color: #1e7e34;
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  tr:nth-child(even) {
+      background-color: #e8e8e8;
+  }
+
+  tr:hover {
+      background-color: #d3d3d3;
+  }
+
+  tbody tr:last-child td {
+      border-bottom: 2px solid #6c7ae0;
+  }
+
+  /* Các kiểu dáng vẫn giữ nguyên như bạn đã định nghĩa */
+  /* Thêm kiểu dáng cho phân trang */
+  .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+  }
+
+  .pagination a, .pagination span {
+      color: #333;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      margin: 0 4px;
+  }
+
+  .pagination a:hover {
+      background-color: #ddd;
+  }
+
+  .pagination .current {
+      background-color: #6c7ae0;
+      color: white;
+      border-radius: 5px;
+  }
+
+  .pagination .disabled {
+      color: #ddd;
+  }
+
+  /* profile */
+  .emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+
+.filter {
+  position: absolute;
+  width: 500px;
+  height: 30px;
+  top: 180px;
+  right: 10px;
+  background-color: #ADD8E6;
+  padding: 5px;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa các phần tử */
+  z-index: 1000;
+}
+
+
+
+.filter label {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.filter select, 
+.filter input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* .filter button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+} */
+
+/* .filter button:hover {
+  background-color: #0056b3;
+} */
+
+/* filter cho trang monitor  */
+.filter2 {
+  position: absolute;
+  width: 50%;
+  height: 30px;
+  top: 180px;
+  right: 230px;
+  background-color: #ADD8E6;
+  padding: 5px;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa các phần tử */
+  z-index: 1000;
+}
+
+.filter2 label {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.filter2 select, 
+.filter2 input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* .filter2 button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+} */
+
+/* .filter2 button:hover {
+  background-color: #0056b3;
+} */
+
+
+
+
+
+
+.link-heading {
+  font-size: 1.25rem; /* Kích thước chữ tương đương với h6 */
+  font-weight: 600;   /* Độ đậm của chữ */
+  color: #000;        /* Màu sắc chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  display: flex;
+  align-items: center;
+}
+
+.link-heading:hover {
+  color: #007bff; /* Đổi màu khi hover */
+}
+
+.submit-button {
+  background-color: #4CAF50; /* Màu nền */
+  color: white; /* Màu chữ */
+  border: none; /* Không có viền */
+  padding: 10px 20px; /* Khoảng cách bên trong */
+  text-align: center; /* Căn giữa chữ */
+  text-decoration: none; /* Không có gạch chân */
+  display: inline-block; /* Hiển thị như khối nội tuyến */
+  font-size: 16px; /* Kích thước chữ */
+  margin: 4px 2px; /* Khoảng cách giữa các nút */
+  cursor: pointer; /* Đổi con trỏ thành tay khi di chuột qua */
+  border-radius: 8px; /* Bo góc */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.submit-button:hover {
+  background-color: #45a049; /* Màu nền khi di chuột qua */
+}
+
+
+.linkk {
+  font-size: 12px; /* Làm cho chữ nhỏ lại */
+  color: #000;
+  text-decoration: none;
+  opacity: 0.3; /* Tạo hiệu ứng mờ */
+  transition: opacity 0.5s ease; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.linkk:hover {
+  opacity: 1; /* Hiện rõ khi hover */
+}
